@@ -1,7 +1,6 @@
 # Virtual Environment
-venv/
-env/
-ENV/
+.venv/
+virtualenv/
 
 # Python cache files
 __pycache__/
@@ -13,4 +12,7 @@ __pycache__/
 *.pth
 *.weights
 *.ckpt
+*.npz
 model_weights/
+checkpoints/
+saved_models/
