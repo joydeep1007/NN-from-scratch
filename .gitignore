@@ -1,0 +1,16 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Model weights and checkpoints
+*.h5
+*.pth
+*.weights
+*.ckpt
+model_weights/
