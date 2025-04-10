@@ -5,9 +5,9 @@ from neural_network import NeuralNetwork
 X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
 y = np.array([[0], [1], [1], [0]])
 
-# Initialize and train neural network
-nn = NeuralNetwork(input_size=2, hidden_size=4, output_size=1)
-nn.train(X, y, epochs=1000, learning_rate=0.1)
+# Initialize and train neural network with larger hidden layer
+nn = NeuralNetwork(input_size=2, hidden_size=8, output_size=1)
+nn.train(X, y, epochs=2000, learning_rate=0.05)
 
 # Save the trained weights
 np.savez('model_weights.npz', 
