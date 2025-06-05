@@ -1,0 +1,27 @@
+name: Daily Quote Logger
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # Runs daily at 4 AM UTC (adjust if needed)
+  workflow_dispatch:       # Allows manual trigger from the Actions tab
+
+jobs:
+  quote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch quote and log it
+        run: |
+          curl -s https://api.quotable.io/random |
+          jq -r '"\(.dateAdded) - \(.content) — \(.author)"' >> quotes_log.txt
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quotes_log.txt
+          git commit -m "💬 Daily quote logged" || echo "No changes to commit"
+          git push
